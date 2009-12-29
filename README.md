@@ -10,9 +10,10 @@ syntax to enable asynchronous execution of the template.
 You can always use the synchronous features. So use it whenever you need a
 templating solution.
 
-The asyncronous features come in handy when you
-1. Want to flush the output to the client as early as possible
-2. Need to stream your generated content
+The asynchronous features come in handy when you
+
+1. want to flush the output to the client as early as possible
+2. need to stream your generated content
 
 ## Usage
 
@@ -73,6 +74,12 @@ The asyncronous features come in handy when you
 to the rest of the template. The rest of the template will continue executing but no
 output will be returned until the `res.finish()` method will be called.
 
+### Partials
+
+    <% res.partial("partial.js.html", { hello: "world" }); %>
+
+`res.partial(filename, paras)
+
 ### Escaping
 
 There is currently no escaping of output but this will change.
@@ -87,12 +94,12 @@ Construct a template engine with
       autoUpdate: false
     });
 
-If `autoUpdate` is true, asyncEJS will continously look for changes in templates and automatically
-update them when they change on disk.
+If `autoUpdate` is true, asyncEJS will continously look for changes in templates and
+automatically update them when they change on disk.
 
 ### Loading Templates
 
-After you instatiated a template engine use the `template` method to create a template
+After you instantiated a template engine use the `template` method to create a template
 function.
 
     var template = te.template("template.t.html");
