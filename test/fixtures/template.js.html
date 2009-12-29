@@ -1,0 +1,22 @@
+<html>
+  <body>
+    <% ctx.test = 1; %>
+    <h2><%= JSON.stringify(ctx) %></h2>
+
+    <h1><%? setTimeout(function () { res.print("Async1"); res.finish(); }, 400)  %></h1>
+    <p><%?  setTimeout(function () { res.print("Async2"); res.finish(); }, 100)  %></p>
+
+    <h2><% res.schedule(function (res) {setTimeout(function () { %>Async3<% res.finish(); }, 300)}); %></h2>
+
+    <% res.partial("fixtures/partial.js.html", { hello: "world" }); %>
+   
+   <h6><%? setTimeout(function () { 
+     res.print("Async4"); 
+     res.partial("fixtures/partialStatic.js.html")
+      .addCallback(function () { 
+        res.finish(); 
+      }) 
+    }, 200) %></h6>
+  
+  </body>
+</html>

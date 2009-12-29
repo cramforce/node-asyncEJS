@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <% ctx.hello = "World";  %>
+    <title><%= "Hello " + ctx.hello %></title>
+  </head>
+  <body>
+
+    <h1><%? setTimeout(function () { res.print("Async Header"); res.finish(); }, 2000)  %></h1>
+    <p><%? setTimeout(function () { res.print("Body"); res.finish(); }, 1000)  %></p>
+
+  </body>
+</html>
