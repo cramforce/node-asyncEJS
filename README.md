@@ -91,11 +91,15 @@ There is currently no escaping of output but this will change.
 Construct a template engine with
 
     var te = require("../lib/asyncEJS").Engine({
-      autoUpdate: false
+      autoUpdate: false,
+      templateRoot: '/path/to/templates'
     });
 
 If `autoUpdate` is true, asyncEJS will continously look for changes in templates and
 automatically update them when they change on disk.
+
+`templateRoot` is a directory where templates will be served from. If omitted, templates
+will be served from the current working directory.
 
 ### Loading Templates
 
