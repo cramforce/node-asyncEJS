@@ -36,16 +36,17 @@ The asynchronous features come in handy when you
 
     var te = require("../lib/asyncEJS").Engine();
 
-    var template = te.template("template.t.html");
+    te.template("template.t.html", function () {
 
-    var templateResponse = template(paras);
+      var templateResponse = template(paras);
 
-    templateResponse.addListener("body", function (chunk) {
-      sys.print(chunk);
-    });
+      templateResponse.addListener("body", function (chunk) {
+        sys.print(chunk);
+      });
 
-    templateResponse.addListener("complete", function () {
-      sys.puts("COMPLETE")
+      templateResponse.addListener("complete", function () {
+        sys.puts("COMPLETE")
+      });
     });
     
 ## Templates
@@ -106,7 +107,7 @@ will be served from the current working directory.
 After you instantiated a template engine use the `template` method to create a template
 function.
 
-    var template = te.template("template.t.html");
+    te.template("template.t.html", function (template) { ... });
   
 Executing the template function with `paras` will return a templateResponse. The `paras` are
 accessible as `ctx` variable inside the template.
