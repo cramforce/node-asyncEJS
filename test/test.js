@@ -3,7 +3,7 @@ var assert = require('assert'),
     path = require('path'),
     fs = require("fs");
 
-var reference = fs.readFileSync(path.join(__dirname, "fixtures/reference.html"));
+var reference = fs.readFileSync(path.join(__dirname, "fixtures/reference.html"))+"";
 
 (function testRender() {
 
@@ -23,7 +23,9 @@ var reference = fs.readFileSync(path.join(__dirname, "fixtures/reference.html"))
       if(body === reference) {
         sys.puts("testRender: OK");
       } else {
-        sys.puts("testRender: NOT OK")
+        sys.puts("testRender: NOT OK");
+        sys.puts("######## Original:\n"+reference);
+        sys.puts("######## Output:\n"+body);
       }
     });
   })
