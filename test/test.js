@@ -8,6 +8,7 @@ var reference = fs.readFileSync(path.join(__dirname, "fixtures/reference.html"))
 (function testRender() {
 
   var te = require("../lib/asyncEJS").Engine();
+  //var te = require("asyncEJS").Engine();
 
   te.template("fixtures/template.js.html", function (t1) {
     var templateResponse = t1({
